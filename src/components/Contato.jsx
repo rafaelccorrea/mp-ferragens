@@ -1,0 +1,101 @@
+import { useState } from 'react'
+import {
+  TELEFONE_DISPLAY, TELEFONE_E164, INSTAGRAM_CLIENTE, INSTAGRAM_CLIENTE_HANDLE, whatsappLink,
+} from '../config'
+import { IconWhatsApp, IconPhone, IconInstagram, IconClock } from './Icons'
+
+const servicos = [
+  'Tanque em aço inox',
+  'Tubulação em inox',
+  'Estrutura metálica',
+  'Montagem industrial',
+  'Instalação / manutenção elétrica',
+  'Outro',
+]
+
+function Contato() {
+  const [form, setForm] = useState({ nome: '', empresa: '', servico: servicos[0], msg: '' })
+  const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }))
+
+  const enviar = (e) => {
+    e.preventDefault()
+    const txt =
+      `Olá! Vim pelo site da MP.\n` +
+      `*Nome:* ${form.nome}\n` +
+      `*Empresa:* ${form.empresa || '-'}\n` +
+      `*Serviço:* ${form.servico}\n` +
+      `*Detalhes:* ${form.msg || '-'}`
+    window.open(whatsappLink(txt), '_blank', 'noopener')
+  }
+
+  return (
+    <section className="section contato" id="contato">
+      <div className="container">
+        <div className="section-head" data-reveal>
+          <span className="kicker">Fale conosco</span>
+          <h2 className="section-title">
+            Solicite seu <em>orçamento</em>
+          </h2>
+          <p className="section-desc">
+            Preencha o formulário ou chame direto no WhatsApp. Sem cadastro, sem espera.
+          </p>
+        </div>
+
+        <div className="contato-grid">
+          <div className="contact-list" data-reveal>
+            <a className="contact-item" href={whatsappLink()} target="_blank" rel="noopener noreferrer">
+              <span className="contact-icon wa"><IconWhatsApp /></span>
+              <span><small>WhatsApp</small><strong>{TELEFONE_DISPLAY}</strong></span>
+            </a>
+            <a className="contact-item" href={`tel:${TELEFONE_E164}`}>
+              <span className="contact-icon"><IconPhone /></span>
+              <span><small>Telefone</small><strong>{TELEFONE_DISPLAY}</strong></span>
+            </a>
+            <a className="contact-item" href={INSTAGRAM_CLIENTE} target="_blank" rel="noopener noreferrer">
+              <span className="contact-icon"><IconInstagram /></span>
+              <span><small>Instagram</small><strong>{INSTAGRAM_CLIENTE_HANDLE}</strong></span>
+            </a>
+            <div className="contact-item static">
+              <span className="contact-icon"><IconClock /></span>
+              <span><small>Atendimento</small><strong>Seg a sex, 8h às 18h</strong></span>
+            </div>
+          </div>
+
+          <form className="form" onSubmit={enviar} data-reveal style={{ '--d': '100ms' }}>
+            <div className="form-row">
+              <label className="field">
+                <span>Nome</span>
+                <input required value={form.nome} onChange={set('nome')} placeholder="Seu nome" />
+              </label>
+              <label className="field">
+                <span>Empresa</span>
+                <input value={form.empresa} onChange={set('empresa')} placeholder="Nome da empresa" />
+              </label>
+            </div>
+            <label className="field">
+              <span>Serviço de interesse</span>
+              <select value={form.servico} onChange={set('servico')}>
+                {servicos.map((s) => <option key={s}>{s}</option>)}
+              </select>
+            </label>
+            <label className="field">
+              <span>Descreva sua necessidade</span>
+              <textarea
+                rows={4}
+                value={form.msg}
+                onChange={set('msg')}
+                placeholder='Ex.: tanque de 500 L com saída 1.1/2", prazo de 30 dias...'
+              />
+            </label>
+            <button type="submit" className="btn btn-primary btn-lg btn-block">
+              <IconWhatsApp /> Enviar pelo WhatsApp
+            </button>
+            <p className="form-note">O WhatsApp abre com a mensagem pronta. Você confirma antes de enviar.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export default Contato
