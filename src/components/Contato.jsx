@@ -1,8 +1,6 @@
 import { useState } from 'react'
-import {
-  TELEFONE_DISPLAY, TELEFONE_E164, INSTAGRAM_CLIENTE, INSTAGRAM_CLIENTE_HANDLE, whatsappLink,
-} from '../config'
-import { IconWhatsApp, IconPhone, IconInstagram, IconClock } from './Icons'
+import { CONTATOS, INSTAGRAM_CLIENTE, INSTAGRAM_CLIENTE_HANDLE, whatsappLink } from '../config'
+import { IconWhatsApp, IconPhone, IconInstagram, IconClock, IconTank, IconBolt, IconGear } from './Icons'
 
 const servicos = [
   'Tanque em aço inox',
@@ -13,19 +11,28 @@ const servicos = [
   'Outro',
 ]
 
+const iconePorArea = { comercial: IconGear, metalurgica: IconTank, eletrica: IconBolt }
+
 function Contato() {
-  const [form, setForm] = useState({ nome: '', empresa: '', servico: servicos[0], msg: '' })
+  const [form, setForm] = useState({
+    nome: '',
+    empresa: '',
+    servico: servicos[0],
+    msg: '',
+    contato: CONTATOS[0].id,
+  })
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }))
 
   const enviar = (e) => {
     e.preventDefault()
+    const destino = CONTATOS.find((c) => c.id === form.contato) || CONTATOS[0]
     const txt =
       `Olá! Vim pelo site da MP.\n` +
       `*Nome:* ${form.nome}\n` +
       `*Empresa:* ${form.empresa || '-'}\n` +
       `*Serviço:* ${form.servico}\n` +
       `*Detalhes:* ${form.msg || '-'}`
-    window.open(whatsappLink(txt), '_blank', 'noopener')
+    window.open(whatsappLink(txt, destino.numero), '_blank', 'noopener')
   }
 
   return (
@@ -37,20 +44,41 @@ function Contato() {
             Solicite seu <em>orçamento</em>
           </h2>
           <p className="section-desc">
-            Preencha o formulário ou chame direto no WhatsApp. Sem cadastro, sem espera.
+            Fale direto com quem cuida da sua demanda. Sem cadastro, sem espera.
           </p>
+        </div>
+
+        <div className="contatos-grid">
+          {CONTATOS.map((c, i) => {
+            const Icon = iconePorArea[c.id] || IconPhone
+            return (
+              <article className="contato-card" key={c.id} data-reveal style={{ '--d': `${i * 80}ms` }}>
+                <span className="contato-icon">
+                  <Icon width={24} height={24} />
+                </span>
+                <span className="contato-area">{c.area}</span>
+                <h3>{c.display}</h3>
+                <p>{c.nome}</p>
+                <div className="contato-acoes">
+                  <a
+                    href={whatsappLink(c.msg, c.numero)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-wa"
+                  >
+                    <IconWhatsApp width={18} height={18} /> WhatsApp
+                  </a>
+                  <a href={`tel:+${c.numero}`} className="btn btn-outline">
+                    <IconPhone width={18} height={18} /> Ligar
+                  </a>
+                </div>
+              </article>
+            )
+          })}
         </div>
 
         <div className="contato-grid">
           <div className="contact-list" data-reveal>
-            <a className="contact-item" href={whatsappLink()} target="_blank" rel="noopener noreferrer">
-              <span className="contact-icon wa"><IconWhatsApp /></span>
-              <span><small>WhatsApp</small><strong>{TELEFONE_DISPLAY}</strong></span>
-            </a>
-            <a className="contact-item" href={`tel:${TELEFONE_E164}`}>
-              <span className="contact-icon"><IconPhone /></span>
-              <span><small>Telefone</small><strong>{TELEFONE_DISPLAY}</strong></span>
-            </a>
             <a className="contact-item" href={INSTAGRAM_CLIENTE} target="_blank" rel="noopener noreferrer">
               <span className="contact-icon"><IconInstagram /></span>
               <span><small>Instagram</small><strong>{INSTAGRAM_CLIENTE_HANDLE}</strong></span>
@@ -58,6 +86,10 @@ function Contato() {
             <div className="contact-item static">
               <span className="contact-icon"><IconClock /></span>
               <span><small>Atendimento</small><strong>Seg a sex, 8h às 18h</strong></span>
+            </div>
+            <div className="contact-item static">
+              <span className="contact-icon"><IconWhatsApp /></span>
+              <span><small>Como funciona</small><strong>Mande fotos, medidas e prazo pelo WhatsApp</strong></span>
             </div>
           </div>
 
@@ -72,12 +104,20 @@ function Contato() {
                 <input value={form.empresa} onChange={set('empresa')} placeholder="Nome da empresa" />
               </label>
             </div>
-            <label className="field">
-              <span>Serviço de interesse</span>
-              <select value={form.servico} onChange={set('servico')}>
-                {servicos.map((s) => <option key={s}>{s}</option>)}
-              </select>
-            </label>
+            <div className="form-row">
+              <label className="field">
+                <span>Serviço de interesse</span>
+                <select value={form.servico} onChange={set('servico')}>
+                  {servicos.map((s) => <option key={s}>{s}</option>)}
+                </select>
+              </label>
+              <label className="field">
+                <span>Falar com</span>
+                <select value={form.contato} onChange={set('contato')}>
+                  {CONTATOS.map((c) => <option key={c.id} value={c.id}>{c.area}</option>)}
+                </select>
+              </label>
+            </div>
             <label className="field">
               <span>Descreva sua necessidade</span>
               <textarea
