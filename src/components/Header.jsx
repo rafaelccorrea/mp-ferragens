@@ -30,7 +30,7 @@ function Header() {
     <header className={`header ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="container header-inner">
         <a href="#top" className="brand" aria-label="MP Fabricação e Montagens">
-          <span className="brand-logo"><img src="/logo-mp.png" alt="MP" width="520" height="270" /></span>
+          <span className="brand-logo"><img src="/logo-mp-t.png" alt="MP" width="515" height="256" /></span>
           <span className="brand-text">
             <strong>Fabricação &amp; Montagens</strong>
             <small>Industriais</small>
