@@ -206,7 +206,7 @@ button { font: inherit; }
   background: linear-gradient(135deg, var(--orange-2), var(--orange));
   box-shadow: 0 6px 18px rgba(255, 122, 26, 0.35);
 }
-.brand-logo { display: inline-flex; align-items: center; height: 46px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.45)); }
+.brand-logo { display: inline-flex; align-items: center; height: 46px; filter: drop-shadow(0 0 1.5px rgba(255,255,255,0.85)) drop-shadow(0 0 10px rgba(255,255,255,0.25)) drop-shadow(0 6px 12px rgba(0,0,0,0.5)); }
 .brand-logo img { height: 42px; width: auto; }
 .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
 .brand-text strong { font-family: var(--font-display); font-size: 0.98rem; font-weight: 700; }
