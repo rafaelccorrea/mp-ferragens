@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { whatsappLink } from '../config'
-import { IconWhatsApp, IconMenu, IconClose } from './Icons'
+import { IconWhatsApp, IconMenu, IconClose, IconSun, IconMoon } from './Icons'
+import useTheme from '../hooks/useTheme'
 
 const links = [
   { href: '#servicos', label: 'Serviços' },
@@ -13,6 +14,7 @@ const links = [
 function Header() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { theme, toggle } = useTheme()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -30,7 +32,7 @@ function Header() {
     <header className={`header ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="container header-inner">
         <a href="#top" className="brand" aria-label="MP Fabricação e Montagens">
-          <span className="brand-logo"><img src="/logo-mp-t.png" alt="MP" width="515" height="256" /></span>
+          <span className="brand-logo"><img src="/logo-mp-t.png" alt="MP Fabricação e Montagens Industriais" width="515" height="256" /></span>
           <span className="brand-text">
             <strong>Fabricação &amp; Montagens</strong>
             <small>Industriais</small>
@@ -55,6 +57,14 @@ function Header() {
         </nav>
 
         <div className="header-actions">
+          <button
+            className="theme-toggle"
+            onClick={toggle}
+            aria-label={theme === 'dark' ? 'Ativar tema claro' : 'Ativar tema escuro'}
+            title={theme === 'dark' ? 'Tema claro' : 'Tema escuro'}
+          >
+            {theme === 'dark' ? <IconSun width={20} height={20} /> : <IconMoon width={20} height={20} />}
+          </button>
           <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm header-cta">
             <IconWhatsApp width={18} height={18} /> Orçamento
           </a>

@@ -5,7 +5,7 @@ function Footer() {
     <footer className="footer">
       <div className="container footer-inner">
         <div className="footer-brand">
-          <span className="brand-logo"><img src="/logo-mp-t.png" alt="MP" width="515" height="256" /></span>
+          <span className="brand-logo"><img src="/logo-mp-t.png" alt="MP Fabricação e Montagens Industriais" loading="lazy" width="515" height="256" /></span>
           <div>
             <strong>{EMPRESA}</strong>
             <p>Aço inox · Estruturas metálicas · Montagem industrial · Elétrica</p>

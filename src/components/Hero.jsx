@@ -8,7 +8,7 @@ import SparksCanvas from './SparksCanvas'
  */
 function Hero() {
   return (
-    <section className="hero" id="top">
+    <section className="hero" id="top" aria-label="Apresentação">
       <div className="hero-bg">
         {/*
         <video className="hero-video" autoPlay muted loop playsInline poster="/hero-poster.jpg">

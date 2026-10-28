@@ -6,6 +6,6 @@ Landing page em React + Vite para a MP Fabricação e Montagens (Instagram @mp.f
 - `npm run build` gera `dist/`; o conteúdo de `dist/` vai para a `public_html` da Hostinger
 - Dados de contato, links e crédito do desenvolvedor ficam em `src/config.js`
 
-Publicado em: https://pink-porcupine-559931.hostingersite.com/
+Publicado em: https://mpfabricacaoemontagens.com.br/
 
 Desenvolvido por Next Innovation Technologies.

@@ -1,0 +1,16 @@
+{
+  "name": "MP Fabricação e Montagens Industriais",
+  "short_name": "MP Fabricação",
+  "description": "Tanques em inox 304, estruturas metálicas, montagem industrial e elétrica.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f6f9",
+  "theme_color": "#f26a00",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
