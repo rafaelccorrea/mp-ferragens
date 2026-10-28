@@ -54,7 +54,7 @@ button { font: inherit; }
 @media (max-width: 640px) {
   .container { width: calc(100% - 40px); }
   .section { padding: 64px 0; }
-  .brand-logo { height: 40px; padding: 0 8px; }
+  .brand-logo { display: inline-flex; align-items: center; height: 46px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.45)); }
   .brand-logo img { height: 30px; }
   .hero h1 { font-size: clamp(2.1rem, 9.5vw, 2.8rem); }
   .hero-lead { font-size: 1rem; }
@@ -207,7 +207,7 @@ button { font: inherit; }
   box-shadow: 0 6px 18px rgba(255, 122, 26, 0.35);
 }
 .brand-logo { display: inline-flex; align-items: center; height: 46px; padding: 0 10px; border-radius: 12px; background: #eeede b; background: #eeedeb; box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
-.brand-logo img { height: 36px; width: auto; }
+.brand-logo img { height: 42px; width: auto; }
 .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
 .brand-text strong { font-family: var(--font-display); font-size: 0.98rem; font-weight: 700; }
 .brand-text small { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-top: 3px; }
