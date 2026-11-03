@@ -5,10 +5,10 @@ const servicos = [
   {
     Icon: IconTank,
     num: '01',
-    titulo: 'Fabricação em aço inox',
-    desc: 'Tanques, reservatórios, tubulações e equipamentos em inox 304 para processos alimentícios, químicos e farmacêuticos.',
-    itens: ['Tanques e reservatórios', 'Tubulações e conexões', 'Solda TIG profissional'],
-    msg: 'Olá! Gostaria de um orçamento de fabricação em aço inox.',
+    titulo: 'Fabricação de equipamentos',
+    desc: 'Esteiras transportadoras e equipamentos industriais em geral, sob medida, em aço inox e aço carbono, para todos os segmentos.',
+    itens: ['Esteiras transportadoras', 'Equipamentos sob medida', 'Tanques, tubulações e peças em inox'],
+    msg: 'Olá! Gostaria de um orçamento de fabricação de equipamento.',
   },
   {
     Icon: IconGear,

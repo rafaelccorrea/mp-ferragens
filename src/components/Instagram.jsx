@@ -12,7 +12,7 @@ function Instagram() {
               Acompanhe os projetos <em>no Instagram</em>
             </h2>
             <p className="section-desc left">
-              Tanques, tubulações, estruturas e instalações elétricas. Fotos e
+              Esteiras, equipamentos, estruturas e instalações elétricas. Fotos e
               vídeos direto do chão de fábrica.
             </p>
             <a href={INSTAGRAM_CLIENTE} target="_blank" rel="noopener noreferrer" className="btn btn-insta btn-lg">

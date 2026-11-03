@@ -3,8 +3,9 @@ import { CONTATOS, INSTAGRAM_CLIENTE, INSTAGRAM_CLIENTE_HANDLE, whatsappLink } f
 import { IconWhatsApp, IconPhone, IconInstagram, IconClock, IconTank, IconBolt, IconGear } from './Icons'
 
 const servicos = [
-  'Tanque em aço inox',
-  'Tubulação em inox',
+  'Esteira transportadora',
+  'Fabricação de equipamento',
+  'Tanque / tubulação em inox',
   'Estrutura metálica',
   'Montagem industrial',
   'Instalação / manutenção elétrica',
@@ -124,7 +125,7 @@ function Contato() {
                 rows={4}
                 value={form.msg}
                 onChange={set('msg')}
-                placeholder='Ex.: tanque de 500 L com saída 1.1/2", prazo de 30 dias...'
+                placeholder='Ex.: esteira de 6 m com correia em PVC, prazo de 30 dias...'
               />
             </label>
             <button type="submit" className="btn btn-primary btn-lg btn-block">

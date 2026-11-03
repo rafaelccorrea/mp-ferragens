@@ -33,8 +33,9 @@ function Hero() {
             para a sua indústria
           </h1>
           <p className="hero-lead" data-reveal style={{ '--d': '160ms' }}>
-            Tanques e tubulações em aço inox 304, estruturas metálicas, montagem
-            industrial e instalações elétricas. Projeto, fabricação e entrega com
+            Fabricação de esteiras e equipamentos industriais em geral, peças em
+            aço inox e carbono, estruturas metálicas, montagem industrial e
+            instalações elétricas. Projeto, fabricação e entrega com
             um único fornecedor.
           </p>
 
